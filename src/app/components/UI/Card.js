@@ -3,7 +3,7 @@ import { Card as RadixCard } from '@radix-ui/themes';
 
 export function Card({ children, className = '' }) {
   return (
-    <RadixCard className={`bg-transparent rounded-xl shadow-lg p-6 ${className}`}>
+    <RadixCard className={`bg-white/5 backdrop-blur-md rounded-xl shadow-lg p-6 ${className}`}>
       {children}
     </RadixCard>
   );

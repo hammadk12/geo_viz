@@ -1,15 +1,16 @@
 // Layout For Each Page
 
 import '@radix-ui/themes/styles.css'
-import "./styles/globals.css"
 import { Theme } from '@radix-ui/themes';
-import { darkTheme } from './theme.config';
+import "./styles/globals.css"
+import Navbar from './components/UI/Navbar';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Theme appearance='dark' {...darkTheme}>
+        <Theme appearance='dark'>
+          <Navbar />
           {children}
         </Theme>
       </body>
