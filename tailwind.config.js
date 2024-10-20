@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        walsheim: ['"GT Walsheim"', 'sans-serif'],
+      }
   }
  },
   plugins: [],

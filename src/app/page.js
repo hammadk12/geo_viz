@@ -3,23 +3,16 @@ import { Card } from './components/UI/Card';
 import { Button } from './components/UI/Button';
 import DataPoints from "./components/Visualization/DataPoints";
 import WorldMap from "./components/Visualization/WorldMap";
+import Hero from './components/UI/Hero';
  
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-cover bg-center p-6">
+      <div>
+      <Hero />
+      </div>
       <div className="max-w-7xl mx-auto space-y-8">
-
-        <Card>
-          <p className="text-lg mb-4">
-            Explore geographical data visualizations with our interactive map.
-          </p>
-          <div className="flex space-x-4">
-            <Button>Get Started</Button>
-            <Button variant="outline">Learn More</Button>
-          </div>
-        </Card>
-
         <Card>
           <div className="w-full h-[60vh] rounded-lg overflow-hidden">
             <WorldMap>

@@ -11,6 +11,7 @@ export default function RootLayout({ children }) {
       <body>
         <Theme appearance='dark'>
           <Navbar />
+          
           {children}
         </Theme>
       </body>

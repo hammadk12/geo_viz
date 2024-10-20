@@ -5,3 +5,14 @@
 :root {
   background-color: black;
 }
+
+@font-face {
+  font-family: 'GT Walsheim';
+  src: url('../public/fonts/GT-Walsheim-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'GT Walsheim', sans-serif;
+}
