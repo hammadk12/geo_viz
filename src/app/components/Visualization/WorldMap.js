@@ -2,7 +2,7 @@ import React from 'react'
 
 const WorldMap = () => {
   return (
-    <div>WorldMap</div>
+    <div className='font-walsheim'>WorldMap</div>
   )
 }
 
