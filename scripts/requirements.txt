@@ -1,6 +1,0 @@
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-jupyterlab  # Optional, for interactive data analysis
