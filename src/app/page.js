@@ -1,7 +1,6 @@
 // Home Page
 import { Card } from './components/UI/Card';
 import { Button } from './components/UI/Button';
-import DataPoints from "./components/Visualization/DataPoints";
 import WorldMap from "./components/Visualization/WorldMap";
 import Hero from './components/UI/Hero';
  
@@ -13,9 +12,7 @@ export default function Home() {
       <Hero />
         <Card>
           <div className="w-full h-[60vh] rounded-lg overflow-hidden">
-            <WorldMap>
-              <DataPoints />
-            </WorldMap>
+            <WorldMap />
           </div>
         </Card>
 
