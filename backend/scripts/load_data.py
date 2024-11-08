@@ -36,9 +36,6 @@ if os.path.exists(file_path):
     order_counts = data['Country'].value_counts().to_dict()
     print(f"Order Count Per Location: {order_counts}")
 
-
-
-
     # Save metric as JSON file
     metrics = {'total_unique_users': unique_users,
                'unique_locations': unique_locations,
