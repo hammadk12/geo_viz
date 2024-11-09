@@ -18,7 +18,7 @@ print('Current Directory:', os.getcwd())
 if os.path.exists(file_path):
     # Load the dataset
     data = pd.read_csv(file_path, encoding='ISO-8859-1')
-    print(data.head())
+    print(data)
 
      # Identifying Unique Users
     unique_users = data['CustomerID'].nunique()
@@ -36,15 +36,22 @@ if os.path.exists(file_path):
     order_counts = data['Country'].value_counts().to_dict()
     print(f"Order Count Per Location: {order_counts}")
 
+    # Revenue Per Location
+    data['TotalRevenue'] = data['UnitPrice'] * data['Quantity']
+    revenue_per_location = data.groupby('Country')['TotalRevenue'].sum().reset_index()
+    revenue_per_location = revenue_per_location.to_dict(orient='records')
+    print(f"Revenue Per Location: {revenue_per_location}")
+
     # Save metric as JSON file
     metrics = {'total_unique_users': unique_users,
                'unique_locations': unique_locations,
                'number_of_locations': number_of_unique_locations,
-               'order_count_per_location': order_counts
+               'order_count_per_location': order_counts,
+               'revenue_per_location': revenue_per_location
                                                         }
 
     # Path for JSON file
-    json_file_path = '../src/app/public/data/metrics.json'
+    json_file_path = '../public/data/raw.json'
 
     # Save metrics as a JSON file
     with open(json_file_path, 'w') as json_file: json.dump(metrics, json_file, indent=4)
