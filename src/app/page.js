@@ -11,7 +11,7 @@ export default function Home() {
       <div className="max-w-7xl mx-auto space-y-8">
       <Hero />
         <Card>
-          <div className="w-full h-[60vh] rounded-lg overflow-hidden">
+          <div className="w-full h-[68vh] rounded-lg overflow-hidden">
             <WorldMap />
           </div>
         </Card>

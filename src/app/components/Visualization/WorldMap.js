@@ -10,7 +10,7 @@ const WorldMap = () => {
     myChart.showLoading();
      // Fetch both the World GeoJSON and metrics.json
      Promise.all([
-      fetch('/data/world.json').then((res) => res.json()),  // Path to your World GeoJSON file
+      fetch('/data/world1.json').then((res) => res.json()),  // Path to your World GeoJSON file
       fetch('/data/metrics.json').then((res) => res.json()) // Path to your metrics JSON file
     ]).then(([geoJson, metrics]) => {
       myChart.hideLoading();
@@ -19,7 +19,7 @@ const WorldMap = () => {
       echarts.registerMap('world', geoJson);
 
       
-      // Prepare data for visualization (e.g., order counts per location)
+      // Prepare data for visualization 
       const orderData = Object.entries(metrics.order_count_per_location).map(
         ([location, value]) => ({ name: location, value: value || 0 })
       );
@@ -28,24 +28,42 @@ const WorldMap = () => {
       const option = {
         title: {
           text: 'Order Distribution by Country',
-          subtext: '',
-          left: 'left'
+          left: 'center',
+          textStyle: {
+            color: '#fff'
         },
+      },
         tooltip: {
           trigger: 'item',
           formatter: function (params) {
-            const value = params.value !== undefined ? params.value : 0;
+            const value = params.value !== undefined && !isNaN(params.value) ? params.value : 0;
             return `${params.name}<br/>${value} orders`;
+          }
+        },
+        toolbox: {
+          show: true,
+          orient: 'vertical',
+          left: 'right',
+          top: 'center',
+          feature: {
+            dataView: { readOnly: true },
+            restore: {},
+            saveAsImage: {}
           }
         },
         visualMap: {
           min: 0,
-          max: 500000,
+          max: Math.max(...Object.values(metrics.order_count_per_location)),
           text: ['High', 'Low'],
           realtime: false,
           calculable: true,
+          top: 'center',
           inRange: {
             color: ['lightblue', 'yellow', 'orangered']
+          },
+          textStyle: {
+            color: '#fff',
+            
           }
         },
         series: [
