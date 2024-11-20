@@ -104,7 +104,7 @@
         },
         {
             "Country": "Bahrain",
-            "TotalRevenue": 548.4
+            "TotalRevenue": 1548.4
         },
         {
             "Country": "Belgium",
@@ -128,7 +128,7 @@
         },
         {
             "Country": "Czech Republic",
-            "TotalRevenue": 707.72
+            "TotalRevenue": 1707.72
         },
         {
             "Country": "Denmark",
@@ -204,7 +204,7 @@
         },
         {
             "Country": "Saudi Arabia",
-            "TotalRevenue": 131.17
+            "TotalRevenue": 1131.17
         },
         {
             "Country": "Singapore",
@@ -223,20 +223,16 @@
             "TotalRevenue": 56385.35
         },
         {
-            "Country": "United States of America",
-            "TotalRevenue": 2413730.92
+            "Country": "USA",
+            "TotalRevenue": 241373.92
         },
         {
-            "Country": "United Arab Emirates",
+            "Country": "UAE",
             "TotalRevenue": 1902.28
         },
         {
-            "Country": "United Kingdom",
-            "TotalRevenue": 8187806.364
-        },
-        {
-            "Country": "Unspecified",
-            "TotalRevenue": 4749.79
+            "Country": "UK",
+            "TotalRevenue": 388780.364
         }
     ]
 }

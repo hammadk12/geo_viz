@@ -3,22 +3,34 @@ import { Card } from './components/UI/Card';
 import { Button } from './components/UI/Button';
 import WorldMap from "./components/Visualization/WorldMap";
 import Hero from './components/UI/Hero';
- 
+import RevenueChart from './components/Visualization/RevenueChart';
+import { Callout } from '@radix-ui/themes';
+import { Info } from 'lucide-react';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-cover bg-center p-6">
       <div className="max-w-7xl mx-auto space-y-8">
       <Hero />
-        <Card>
-          <div className="w-full h-[68vh] rounded-lg overflow-hidden">
+      <Callout.Root size='3'>
+        <Callout.Icon>
+          <Info />
+        </Callout.Icon>
+        <Callout.Text>
+          View on desktop for the best experience. Refresh page to render visualizations if not visible.
+        </Callout.Text>
+      </Callout.Root>
+
+        <Card className='bg-[#e7e5e4]'> 
+          <div className="w-full h-[65vh] rounded-lg overflow-hidden">
             <WorldMap />
           </div>
         </Card>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card>
-            <h2 className="text-xl font-bold mb-4">Chart/Graph</h2>
+        <div className="grid grid-cols-1 gap-8">
+          <Card className='bg-[#e7e5e4] h-fit'>
+            <h2 className="text-2xl font-bold mb-4 text-center text-black">Total Revenue By Country</h2>
+            <RevenueChart />
           </Card>
 
           <Card>

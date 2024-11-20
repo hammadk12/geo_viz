@@ -30,7 +30,9 @@ const WorldMap = () => {
           text: 'Order Distribution by Country',
           left: 'center',
           textStyle: {
-            color: '#fff'
+            color: '#000000',
+            fontFamily: 'GT Walsheim, sans-serif',
+            fontSize: 25
         },
       },
         tooltip: {
@@ -62,7 +64,7 @@ const WorldMap = () => {
             color: ['lightblue', 'yellow', 'orangered']
           },
           textStyle: {
-            color: '#fff',
+            color: '#000000',
             
           }
         },
