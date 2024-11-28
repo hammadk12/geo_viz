@@ -27,10 +27,9 @@ const WorldMap = () => {
         // Define chart options
       const option = {
         title: {
-          text: 'Order Distribution by Country',
           left: 'center',
           textStyle: {
-            color: '#000000',
+            color: 'white',
             fontFamily: 'GT Walsheim, sans-serif',
             fontSize: 25
         },
@@ -64,7 +63,7 @@ const WorldMap = () => {
             color: ['lightblue', 'yellow', 'orangered']
           },
           textStyle: {
-            color: '#000000',
+            color: 'white',
             
           }
         },

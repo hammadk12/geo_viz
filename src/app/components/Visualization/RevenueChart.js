@@ -30,7 +30,7 @@ const RevenueChart = () => {
             xAxis: { name: 'Total Revenue' },
             yAxis: { type: 'category' },
             textStyle: {
-                color: 'black',
+                color: 'white',
                 
             },
             visualMap: {

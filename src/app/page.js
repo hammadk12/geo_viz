@@ -6,30 +6,24 @@ import Hero from './components/UI/Hero';
 import RevenueChart from './components/Visualization/RevenueChart';
 import { Callout } from '@radix-ui/themes';
 import { Info } from 'lucide-react';
+import Inisghts from './components/UI/Insights';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-cover bg-center p-6">
       <div className="max-w-7xl mx-auto space-y-8">
       <Hero />
-      <Callout.Root size='3'>
-        <Callout.Icon>
-          <Info />
-        </Callout.Icon>
-        <Callout.Text>
-          View on desktop for the best experience. Refresh page to render visualizations if not visible.
-        </Callout.Text>
-      </Callout.Root>
-
+      <Inisghts />
         <Card className='bg-[#e7e5e4]'> 
-          <div className="w-full h-[65vh] rounded-lg overflow-hidden">
+          <div className="w-full h-[50vh] rounded-lg overflow-hidden">
+            <h2 className='text-2xl font-bold mb-4 text-center text-white'>Order Distribution By Country</h2>
             <WorldMap />
           </div>
         </Card>
 
         <div className="grid grid-cols-1 gap-8">
           <Card className='bg-[#e7e5e4] h-fit'>
-            <h2 className="text-2xl font-bold mb-4 text-center text-black">Total Revenue By Country</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center text-white">Total Revenue By Country</h2>
             <RevenueChart />
           </Card>
 
@@ -58,9 +52,17 @@ export default function Home() {
           </Card>
         </div>
         <div>
-          <Card>
-            <h2 className='text-xl font-bold mb-4 font-walsheim'>Recommendations + Next Steps:</h2>
+          <Card className='mb-6'>
+            <h2 className='text-xl font-bold font-walsheim'>Recommendations + Next Steps:</h2>
           </Card>
+          <Callout.Root size='3' color='bronze'>
+            <Callout.Icon>
+              <Info />
+            </Callout.Icon>
+            <Callout.Text>
+                View on desktop for the best experience. Refresh page to render visualizations if not visible.
+            </Callout.Text>
+          </Callout.Root>
         </div>
       </div>
     </main>

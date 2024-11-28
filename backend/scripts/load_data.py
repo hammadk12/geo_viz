@@ -22,32 +22,77 @@ if os.path.exists(file_path):
 
      # Identifying Unique Users
     unique_users = data['CustomerID'].nunique()
-    print(f"Total Unique Users: {unique_users}")
 
     # Identifying Unique Locations
     unique_locations = data['Country'].unique().tolist()
-    print(f"Unique Locations: {unique_locations}")
 
     # Number of Unique Locations
     number_of_unique_locations = data['Country'].nunique()
-    print(f"Total Unique Locations: {number_of_unique_locations}")
 
     # Number of Orders Per Location
     order_counts = data['Country'].value_counts().to_dict()
-    print(f"Order Count Per Location: {order_counts}")
 
     # Revenue Per Location
     data['TotalRevenue'] = data['UnitPrice'] * data['Quantity']
-    revenue_per_location = data.groupby('Country')['TotalRevenue'].sum().reset_index()
+    revenue_per_location = data.groupby('Country')['TotalRevenue'].sum().reset_index().sort_values(by='TotalRevenue', ascending=False)
     revenue_per_location = revenue_per_location.to_dict(orient='records')
-    print(f"Revenue Per Location: {revenue_per_location}")
+
+    # Total Revenue
+    total_revenue = data['TotalRevenue'].sum()
+    print(f"Total Revenue: {total_revenue}")
+
+    # Revenue Per Item
+    data['TotalRevenue'] = data['UnitPrice'] * data['Quantity']
+
+    # Filter to remove rows where value is 0 or negative
+    cleaned_data = data[data['TotalRevenue'] > 0]
+
+    item_revenue = (
+        cleaned_data.groupby(['StockCode', 'Description'])['TotalRevenue']
+        .sum() # Sum revenue per item
+        .reset_index() # Convert groupby object to DataFrame
+        .sort_values(by='TotalRevenue', ascending=False) # Sort by revenue in descending order
+    )
+
+    # Convert DataFrame to dict (JSON-serializable)
+    item_revenue = item_revenue.to_dict(orient='records')
+    
+
+    # Monthly Revenue + Orders
+    # Convert InvoiceDate with format 'day-month-year hour:minute'
+    data['InvoiceDate'] = pd.to_datetime(data['InvoiceDate'], format='%d-%m-%Y %H:%M', errors='coerce')
+
+    # Extract month and year
+    data['Month'] = data['InvoiceDate'].dt.to_period('M')
+
+    # Calculate number of orders per month
+    monthly_orders = data.groupby('Month').size()
+
+    # Calculate total revenue per month
+    monthly_revenue = (data['UnitPrice'] * data['Quantity']).groupby(data['Month']).sum()
+
+    # Prepare summary DataFrame
+    monthly_summary = pd.DataFrame({
+        'Month': monthly_orders.index.astype(str),
+        'Orders': monthly_orders.values,
+        'Revenue': monthly_revenue.values
+    })
+
+    monthly_summary = monthly_summary.sort_values(by='Revenue', ascending=False)
+
+    monthly_summary = monthly_summary.to_dict(orient='records')
+    print(f"Monthly Stats: {monthly_summary}")
+
 
     # Save metric as JSON file
     metrics = {'total_unique_users': unique_users,
                'unique_locations': unique_locations,
                'number_of_locations': number_of_unique_locations,
                'order_count_per_location': order_counts,
-               'revenue_per_location': revenue_per_location
+               'revenue_per_location': revenue_per_location,
+               'total_revenue': total_revenue,
+               'item_revenue': item_revenue,
+               'monthly_summary': monthly_summary
                                                         }
 
     # Path for JSON file
