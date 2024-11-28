@@ -18,7 +18,6 @@ print('Current Directory:', os.getcwd())
 if os.path.exists(file_path):
     # Load the dataset
     data = pd.read_csv(file_path, encoding='ISO-8859-1')
-    print(data)
 
      # Identifying Unique Users
     unique_users = data['CustomerID'].nunique()
@@ -82,6 +81,11 @@ if os.path.exists(file_path):
 
     monthly_summary = monthly_summary.to_dict(orient='records')
     print(f"Monthly Stats: {monthly_summary}")
+
+    monthly_summary_df = pd.DataFrame(monthly_summary)
+    excel_file_path = 'monthly_summary.xlsx'
+    monthly_summary_df.to_excel(excel_file_path, index=False)
+    print(f"Monthly summary report exported to {excel_file_path}")
 
 
     # Save metric as JSON file
