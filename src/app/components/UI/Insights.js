@@ -2,6 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Tableau from './Tableau'
+import Performance from './Performance'
 
 const Inisghts = () => {
   return (
@@ -17,6 +18,11 @@ const Inisghts = () => {
         <p className='text-md md:text-xl lg:text-2xl mb-2 text-center'>Sales Trends and Growth Rates</p>
         <Image src='/images/monthly_summary_FINAL.jpg' width={800} height={40} className='mb-20 mx-auto'/>
         <Tableau />
+        <p className='text-center font-bold font-walsheim mt-20'>Sales Growth %</p>
+        <Image src='/images/sales_growth.png' width={1800} height={140} className='mb-20' />
+        <p className='text-center font-bold font-walsheim'>Order Count Growth %</p>
+        <Image src='/images/order_growth.png' width={1800} height={140} className='mb-[100px]'/>
+        <Performance />
     </div>
   )
 }

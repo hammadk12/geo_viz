@@ -47,8 +47,7 @@ if os.path.exists(file_path):
     cleaned_data = data[data['TotalRevenue'] > 0]
 
     item_revenue = (
-        cleaned_data.groupby(['StockCode', 'Description'])['TotalRevenue']
-        .sum() # Sum revenue per item
+        cleaned_data.groupby(['StockCode', 'Description']).agg({'TotalRevenue': 'sum', 'Quantity': 'sum'})
         .reset_index() # Convert groupby object to DataFrame
         .sort_values(by='TotalRevenue', ascending=False) # Sort by revenue in descending order
     )
@@ -79,13 +78,13 @@ if os.path.exists(file_path):
 
     monthly_summary = monthly_summary.sort_values(by='Revenue', ascending=False)
 
-    monthly_summary = monthly_summary.to_dict(orient='records')
-    print(f"Monthly Stats: {monthly_summary}")
+   # monthly_summary = monthly_summary.to_dict(orient='records')
+   # print(f"Monthly Stats: {monthly_summary}")
 
-    monthly_summary_df = pd.DataFrame(monthly_summary)
-    excel_file_path = 'monthly_summary.xlsx'
-    monthly_summary_df.to_excel(excel_file_path, index=False)
-    print(f"Monthly summary report exported to {excel_file_path}")
+   # monthly_summary_df = pd.DataFrame(monthly_summary)
+   # excel_file_path = 'monthly_summary.xlsx'
+   # monthly_summary_df.to_excel(excel_file_path, index=False)
+   # print(f"Monthly summary report exported to {excel_file_path}")
 
 
     # Save metric as JSON file
@@ -96,7 +95,6 @@ if os.path.exists(file_path):
                'revenue_per_location': revenue_per_location,
                'total_revenue': total_revenue,
                'item_revenue': item_revenue,
-               'monthly_summary': monthly_summary
                                                         }
 
     # Path for JSON file

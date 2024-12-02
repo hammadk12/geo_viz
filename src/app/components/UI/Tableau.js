@@ -3,7 +3,7 @@ import Script from 'next/script';
 
 const Tableau = () => {
   return (
-    <div className='flex'>
+    <div className='flex flex-wrap'>
       {/* Load the Tableau Embedding API v3 as a module */}
       <Script
         type="module"
@@ -15,7 +15,6 @@ const Tableau = () => {
       <tableau-viz
         id="tableauViz"
         src="https://public.tableau.com/views/TotalSalesFINAL/Sheet3?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
-        toolbar="bottom"
         hide-tabs
         style={{ width: '50%', height: '800px' }} // Ensure it has proper dimensions
       ></tableau-viz>
@@ -31,7 +30,6 @@ const Tableau = () => {
       <tableau-viz
         id="tableauViz"
         src="https://public.tableau.com/views/TATAOrderbyMonth/Sheet1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
-        toolbar="bottom"
         hide-tabs
         style={{ width: '50%', height: '800px' }} // Ensure it has proper dimensions
       ></tableau-viz>
