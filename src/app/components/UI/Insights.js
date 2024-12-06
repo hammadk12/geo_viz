@@ -23,6 +23,7 @@ const Inisghts = () => {
         <p className='text-center font-bold font-walsheim'>Order Count Growth %</p>
         <Image src='/images/order_growth.png' width={1800} height={140} className='mb-[100px]'/>
         <Performance />
+        <Image src='/images/product_performance.png' width={1700} height={140}/>
     </div>
   )
 }
