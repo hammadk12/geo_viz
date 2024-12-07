@@ -22,6 +22,13 @@ if os.path.exists(file_path):
      # Identifying Unique Users
     unique_users = data['CustomerID'].nunique()
 
+    # Identifying users per month
+    data['InvoiceDate'] = pd.to_datetime(data['InvoiceDate'], errors='coerce')
+
+    data['YearMonth'] = data['InvoiceDate'].dt.to_period('M')
+
+    monthly_unique_users = data.groupby('YearMonth')['CustomerID'].nunique()
+
     # Identifying Unique Locations
     unique_locations = data['Country'].unique().tolist()
 
@@ -95,6 +102,7 @@ if os.path.exists(file_path):
                'revenue_per_location': revenue_per_location,
                'total_revenue': total_revenue,
                'item_revenue': item_revenue,
+               'monthly_unique_users': {str(k): v for k, v in monthly_unique_users.items()}
                                                         }
 
     # Path for JSON file

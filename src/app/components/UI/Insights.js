@@ -18,12 +18,19 @@ const Inisghts = () => {
         <p className='text-md md:text-xl lg:text-2xl mb-2 text-center'>Sales Trends and Growth Rates</p>
         <Image src='/images/monthly_summary_FINAL.jpg' width={800} height={40} className='mb-20 mx-auto'/>
         <Tableau />
-        <p className='text-center font-bold font-walsheim mt-20'>Sales Growth %</p>
+        <p className='mt-[30px] mb-10 text-md md:text-xl lg:text-2xl font-walsheim'>Month Over Month Growth</p>
+        <p className='text-center font-bold font-walsheim'>Sales Growth %</p>
         <Image src='/images/sales_growth.png' width={1800} height={140} className='mb-20' />
         <p className='text-center font-bold font-walsheim'>Order Count Growth %</p>
-        <Image src='/images/order_growth.png' width={1800} height={140} className='mb-[100px]'/>
+        <Image src='/images/order_growth.png' width={1800} height={140} className='mb-20'/>
         <Performance />
         <Image src='/images/product_performance.png' width={1700} height={140}/>
+        <p className='text-md md:text-xl lg:text-2xl mt-10'>Customer Growth and Repeat Purchase Trends</p>
+        <li>TATA's unique customers grew steadily in 2023, peaking at nearly 55,000 in November. This was a 300% increase compared to prior months.</li>
+        <li>Repeat purchase rates ({'>'} 2 orders)</li>
+        <li></li>
+        <li></li>
+
     </div>
   )
 }
